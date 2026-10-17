@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+fxStudentController -> HttpRequestUtil: request req
+HttpRequestUtil --> StudentController: getStudentList dataRequest
+StudentController-> StudentController: getStudentMapList numName
+StudentController-> StudentRepository : findStudentListByNumName numName
+StudentRepository-> StudentController: findStudentListByNumName List
+loop
+StudentController-> StudentService: getMapFromStudent student s
+StudentService -> StudentController: getMapFromStudent map
+end
+StudentController-> StudentController: getStudentMapList List
+StudentController -> HttpRequestUtil: getStudentList dataResponse
+HttpRequestUtil --> fxStudentController: request res
+@enduml

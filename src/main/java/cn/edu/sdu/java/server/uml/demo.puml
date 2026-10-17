@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Person{
+-personId：Integer
+-num:string
+}
+class User
+class Student
+class Teacher
+class Course
+class FamilyMember
+class Fee
+class Score
+
+class StudentController
+interface PersonRepository
+interface StudentRepository
+interface UserRepository
+interface UserTypeRepository
+class PasswordEncoder
+interface ScoreRepository
+interface FeeRepository
+interface familyMemberRepository
+class BaseService
+class StudentService
+class systemService
+
+enum EUserType {
+ROLE_ADMIN
+ROLE_STUDENT
+ROLE_TEACHER
+}
+User "1" o-- Person  : 聚合
+Student "1" *-- Person  : 包含
+Teacher "1" *-- Person  : 包含
+Fee "many" --o Student : 聚合
+FamilyMember "many" --o Student :聚合
+Score "many" --o Student :聚合
+Score "many" --o Course :聚合
+StudentController ..> PersonRepository :使用
+StudentController ..> StudentRepository
+StudentController ..> UserRepository
+StudentController ..> UserTypeRepository
+StudentController ..> PasswordEncoder
+StudentController ..> ScoreRepository
+StudentController ..> FeeRepository
+StudentController ..> familyMemberRepository
+StudentController ..> BaseService
+StudentController ..> StudentService
+StudentController ..> systemService
+PersonRepository ..> Person
+StudentRepository ..> Student
+UserRepository ..> User
+UserTypeRepository ..> UserType
+FeeRepository ..> fee
+familyMemberRepository ..> familyMember
+
+@enduml

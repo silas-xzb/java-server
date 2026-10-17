@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Person
+class Student
+class Teacher
+class Course
+class Task
+class Schedule
+class Room
+class StudentTask
+class Project
+class StudentProject
+class StudentFamily
+class StudentRelation
+class Active
+class StudentActive
+
+Student "1" --* Person
+Teacher "1" --* Person
+Task "many" --o Course
+Task "many" --o Teacher
+StudentTask "many"  --o Task
+Schedule "many" --o Teacher
+Schedule  "many" --o Room
+Schedule "many"  --o Task
+StudentProject "many"  --o Project
+StudentProject  "many" --o Student
+StudentFamily  "many" --o Student
+StudentRelation "many"  --o Student
+StudentActive  "many" --o Student
+StudentActive  "many" --o Active
+
+
+@enduml
